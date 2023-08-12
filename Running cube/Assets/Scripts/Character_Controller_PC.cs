@@ -20,10 +20,9 @@ public class Character_Controller_PC: MonoBehaviour
 
     [SerializeField] private Animator animator;
     
-    private float tiltValue = 0f;
+    private float sideChange = 0f;
 
     [SerializeField] private Transform GroundCheck;
-    [SerializeField] private float acceleration = 0;
 
     public void Start()
     {
@@ -35,11 +34,11 @@ public class Character_Controller_PC: MonoBehaviour
         GetComponent<Rigidbody>().AddForce(0, 0, fw_Speed * Time.deltaTime);
 
         //This moves the character sideways by using the side_Speed and the direction specified in the player movement script
-        GetComponent<Rigidbody>().AddForce(side_Speed * tiltValue * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        GetComponent<Rigidbody>().AddForce(side_Speed * sideChange * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
         if (pressSpace == true && isGrounded == true)
         {
-            //Debug.Log("Jump!");
+            Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
         }
     }
@@ -48,26 +47,19 @@ public class Character_Controller_PC: MonoBehaviour
 
     void Update()
     {
-        float phoneTiltX = Input.acceleration.x;
-        tiltValue = Mathf.Clamp(phoneTiltX, -acceleration, acceleration);
+        
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer);
-        Debug.Log(tiltValue);
+        sideChange = Input.GetAxisRaw("Horizontal");
 
-        if (Input.touchCount >0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
+            if (Input.GetButtonDown("Jump"))
             {
                 pressSpace = true;
                 animator.SetBool("Should_Jump", true);
             }
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            else if (Input.GetButtonUp("Jump"))
             {
                 pressSpace = false;
-            }
-        }
-        
+            }   
     }
 
     private void FixedUpdate()

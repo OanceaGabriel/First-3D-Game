@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 4653932768124204384}
   - component: {fileID: 6124339040747565833}
   - component: {fileID: 7508546717401047634}
+  - component: {fileID: 491204391472480541}
+  - component: {fileID: 7189111493459424893}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -33,8 +35,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6625090335217561875}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -148,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3939fc7c166aed945b5a3d10e3268479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 1617188230324494845}
 --- !u!95 &7508546717401047634
 Animator:
   serializedVersion: 5
@@ -157,7 +158,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579915577445664430}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: aa9244311fc0ac743bf12e5290a9c1d9, type: 2}
   m_CullingMode: 0
@@ -170,34 +171,50 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &8684683721358686322
-GameObject:
+--- !u!114 &491204391472480541
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6625090335217561875}
-  m_Layer: 8
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6625090335217561875
-Transform:
+  m_GameObject: {fileID: 5579915577445664430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 662666cea0fc95d448a163ed24ffef49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fw_Speed: 0
+  side_Speed: 50
+  jump_Force: 70
+  raycastDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  isGrounded: 0
+  pressSpace: 0
+  animator: {fileID: 7508546717401047634}
+  GroundCheck: {fileID: 0}
+--- !u!114 &7189111493459424893
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8684683721358686322}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.49, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1617188230324494845}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5579915577445664430}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48335260172ee1245b04242e6828f7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fw_Speed: 2000
+  side_Speed: 50
+  jump_Force: 0
+  raycastDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isGrounded: 0
+  pressSpace: 0
+  animator: {fileID: 7508546717401047634}
+  GroundCheck: {fileID: 0}
+  acceleration: 0
