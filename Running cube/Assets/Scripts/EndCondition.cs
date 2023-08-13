@@ -34,6 +34,7 @@ public class EndCondition : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Obstacle") || collision.collider.gameObject.CompareTag("MovingObstacle"))
         {
+            lost = true;
             GetComponent<Character_Controller_PC>().enabled = false;
             GetComponent<Character_Controller_Phone>().enabled = false;
             FindObjectOfType<Game_Manager>().GameOver();
@@ -49,7 +50,7 @@ public class EndCondition : MonoBehaviour
     }
     private void Update()
     {
-        if (transform.position.y < -3)
+        if (transform.position.y < -1)
         {
             FindObjectOfType<Game_Manager>().GameOver();
         }
