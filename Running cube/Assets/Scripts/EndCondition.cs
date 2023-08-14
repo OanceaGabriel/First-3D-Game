@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndCondition : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EndCondition : MonoBehaviour
     void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Score.score = 0;
     }
 
     void OnTriggerEnter(Collider lvlEnded)
