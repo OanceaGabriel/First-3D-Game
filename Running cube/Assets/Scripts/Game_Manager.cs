@@ -19,13 +19,24 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Pause_Game.GameIsPaused = false;
+        Time.timeScale = 1f;
+    }
+
+    public void LoadLevelSelector()
+    {
+        SceneManager.LoadScene("LevelSelection");
+        Time.timeScale = 1f;
+        Pause_Game.GameIsPaused = false;
     }
 
     public void CompleteLevel()
     {
         completeLevelUI.SetActive(true);
     }
+
+    
 }
