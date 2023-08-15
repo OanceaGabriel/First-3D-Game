@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7508546717401047634}
   - component: {fileID: 491204391472480541}
   - component: {fileID: 7189111493459424893}
+  - component: {fileID: 6267526724819034078}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579915577445664430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 662666cea0fc95d448a163ed24ffef49, type: 3}
   m_Name: 
@@ -208,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fw_Speed: 2000
   side_Speed: 50
-  jump_Force: 0
+  jump_Force: 100
   raycastDistance: 0.1
   groundLayer:
     serializedVersion: 2
@@ -218,3 +219,27 @@ MonoBehaviour:
   animator: {fileID: 7508546717401047634}
   GroundCheck: {fileID: 0}
   acceleration: 0
+--- !u!114 &6267526724819034078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5579915577445664430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 651e87ad16ad6e149a94a51692987885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fw_Speed: 0
+  side_Speed: 50
+  jump_Force: 0
+  raycastDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  isGrounded: 0
+  pressSpace: 0
+  joystick: {fileID: 0}
+  animator: {fileID: 7508546717401047634}
+  GroundCheck: {fileID: 0}
