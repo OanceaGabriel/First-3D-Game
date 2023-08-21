@@ -1,9 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.EventSystems;
 
 public class Character_Controller_Joystick : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class Character_Controller_Joystick : MonoBehaviour
     [SerializeField] private float side_Speed = 50f;
     //Forta de saritura
     [SerializeField] private float jump_Force;
+    public bool test;
 
     [Header("Allows jumping")]
     [Range(0f, 0.3f)][SerializeField] private float raycastDistance = 0.1f; //Distanta la care se verifica daca jucatorul este la sol
     [SerializeField] private LayerMask groundLayer; //Masca care sorteaza pe ce ai aterizat
+    [SerializeField] private LayerMask joysticLayer; //Masca care sorteaza apasarea pe joystick
     [SerializeField] private bool isGrounded; //esti la sol?
     [SerializeField] private bool pressSpace; //Ai apasat butonul de jump?
 
@@ -29,6 +32,7 @@ public class Character_Controller_Joystick : MonoBehaviour
     private float sideChange = 0f;
 
     [SerializeField] private Transform GroundCheck;
+    public Camera mainCamera;
 
     public void Start()
     {
@@ -45,7 +49,7 @@ public class Character_Controller_Joystick : MonoBehaviour
         //Daca ai apasat butonul de JUMP si esti la sol poti sari din nou
         if (pressSpace == true && isGrounded == true)
         {
-            Debug.Log("Jump!");
+            //Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
         }
     }
@@ -54,7 +58,7 @@ public class Character_Controller_Joystick : MonoBehaviour
     {
         //Lanseaza o raza care verifica daca te-ai ai aterizat pe sol modificand valoarea variabilei bool isGrounded
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer);
-        //Debug.Log(isGrounded);
+        Debug.Log(isGrounded);
         sideChange = joystick.Horizontal;
         
 
@@ -64,7 +68,14 @@ public class Character_Controller_Joystick : MonoBehaviour
 
             if (touch.phase == TouchPhase.Began)
             {
-                pressSpace = true;
+                Vector2 touchPos = touch.position;
+
+                if (!IsPointerOverUIObject(touchPos))
+                {
+                    test = IsPointerOverUIObject(touchPos);
+                    //Debug.Log(test);
+                    pressSpace = true;
+                }
                 animator.SetBool("Should_Jump", true);
             }
             else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
@@ -90,5 +101,24 @@ public class Character_Controller_Joystick : MonoBehaviour
         }
     }
 
+    bool IsPointerOverUIObject(Vector2 touchPosition)
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = touchPosition;
+
+        // Verificați dacă există atingere cu elemente UI
+        var results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        //Debug.Log(results.Count);
+        if(results.Count > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        } 
+            
+    }
 
 }
