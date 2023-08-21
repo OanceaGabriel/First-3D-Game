@@ -8,8 +8,9 @@ public class RoundPosition : MonoBehaviour
     {
         if (transform != null)
         {
-            // Aplicați formatarea pentru poziție
+            // Aplica formatarea pentru poziție
             transform.position = RoundVector3(transform.position, 2);
+            //transform.rotation = RoundQuaternion(transform.rotation, 2);
         }
     }
 
@@ -20,6 +21,16 @@ public class RoundPosition : MonoBehaviour
             (float)System.Math.Round(vector.x, decimalPlaces),
             (float)System.Math.Round(vector.y, decimalPlaces),
             (float)System.Math.Round(vector.z, decimalPlaces)
+        );
+    }
+
+    Quaternion RoundQuaternion(Quaternion quaternion, int decimalPlaces)
+    {
+        return new Quaternion(
+            (float)System.Math.Round(quaternion.x, decimalPlaces),
+            (float)System.Math.Round(quaternion.y, decimalPlaces),
+            (float)System.Math.Round(quaternion.z, decimalPlaces),
+            (float)System.Math.Round(quaternion.w, decimalPlaces)
         );
     }
 }

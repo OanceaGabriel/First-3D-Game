@@ -32,7 +32,6 @@ public class Character_Controller_Joystick : MonoBehaviour
     private float sideChange = 0f;
 
     [SerializeField] private Transform GroundCheck;
-    public Camera mainCamera;
 
     public void Start()
     {
@@ -56,29 +55,25 @@ public class Character_Controller_Joystick : MonoBehaviour
    
     void Update()
     {
-        //Lanseaza o raza care verifica daca te-ai ai aterizat pe sol modificand valoarea variabilei bool isGrounded
+        //Lanseaza o raza care verifica daca ai aterizat pe sol modificand valoarea variabilei bool isGrounded
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer);
         Debug.Log(isGrounded);
         sideChange = joystick.Horizontal;
-        
-
+    
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-
+            Vector2 touchPos = touch.position;
             if (touch.phase == TouchPhase.Began)
             {
-                Vector2 touchPos = touch.position;
-
                 if (!IsPointerOverUIObject(touchPos))
                 {
                     test = IsPointerOverUIObject(touchPos);
-                    //Debug.Log(test);
                     pressSpace = true;
                 }
                 animator.SetBool("Should_Jump", true);
             }
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
+            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled || IsPointerOverUIObject(touchPos))
             {
                 pressSpace = false;
             }
@@ -101,15 +96,16 @@ public class Character_Controller_Joystick : MonoBehaviour
         }
     }
 
-    bool IsPointerOverUIObject(Vector2 touchPosition)
+
+    bool IsPointerOverUIObject(Vector2 touchPosition) //Verifica daca atingi pe joystick pentru a nu permite saritul in acest caz
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = touchPosition;
 
-        // Verificați dacă există atingere cu elemente UI
+        // Verifica dacă există atingere cu elemente UI
         var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        //Debug.Log(results.Count);
+
         if(results.Count > 0)
         {
             return true;
@@ -117,7 +113,7 @@ public class Character_Controller_Joystick : MonoBehaviour
         else
         {
             return false;
-        } 
+        }
             
     }
 

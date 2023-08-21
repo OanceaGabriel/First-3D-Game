@@ -39,6 +39,7 @@ public class EndCondition : MonoBehaviour
             lost = true;
             GetComponent<Character_Controller_PC>().enabled = false;
             GetComponent<Character_Controller_Phone>().enabled = false;
+            GetComponent<Character_Controller_Joystick>().enabled = false;
             FindObjectOfType<Game_Manager>().GameOver();
 
             foreach (GameObject obstacle in movingObs)
