@@ -19,15 +19,17 @@ public class Character_Controller_Phone: MonoBehaviour
     [SerializeField] private bool pressSpace;
 
     [SerializeField] private Animator animator;
-    
+
     private float tiltValue = 0f;
 
+    [Header("Tilt tuning")]
+    [SerializeField] private float tiltTreshold = 5f;
+
     [SerializeField] private Transform GroundCheck;
-    [SerializeField] private float acceleration = 0;
 
     public void Start()
     {
- 
+        Input.gyro.enabled = true;
     }
     public void Move() //Metoda ce permite miscarea caracterului
     {
@@ -48,10 +50,24 @@ public class Character_Controller_Phone: MonoBehaviour
 
     void Update()
     {
-        float phoneTiltX = Input.acceleration.x;
-        tiltValue = Mathf.Clamp(phoneTiltX, -acceleration, acceleration);
+        //Contoleaza miscarea playerului in functie de rotatia telefonului
+        float phoneTiltY = Input.gyro.rotationRate.y;
+        Debug.Log(phoneTiltY);
+        if(phoneTiltY > tiltTreshold)
+        {
+            tiltValue = -1f;
+        }
+        else if(phoneTiltY < tiltTreshold)
+        {
+            tiltValue = 1f;
+        }
+        else
+        {
+            tiltValue = 0f;
+        }
+
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer);
-        Debug.Log(tiltValue);
+        //Debug.Log(tiltValue);
 
         if (Input.touchCount >0)
         {
