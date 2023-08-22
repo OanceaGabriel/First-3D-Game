@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
@@ -23,13 +23,19 @@ public class Character_Controller_Phone: MonoBehaviour
     private float tiltValue = 0f;
 
     [Header("Tilt tuning")]
-    [SerializeField] private float tiltTreshold = 5f;
+    [SerializeField] private float tiltTreshold;
 
     [SerializeField] private Transform GroundCheck;
 
+    private Gyroscope gyro;
+    private Quaternion rotation;
+
     public void Start()
     {
-        Input.gyro.enabled = true;
+        gyro = Input.gyro;
+        gyro.enabled = true;
+
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
     public void Move() //Metoda ce permite miscarea caracterului
     {
@@ -50,25 +56,26 @@ public class Character_Controller_Phone: MonoBehaviour
 
     void Update()
     {
-        //Contoleaza miscarea playerului in functie de rotatia telefonului
-        float phoneTiltY = Input.gyro.rotationRate.y;
-        Debug.Log(phoneTiltY);
-        if(phoneTiltY > tiltTreshold)
+        // Obține rotația telefonului într-un mod compatibil cu orientarea ecranului
+        rotation = Quaternion.Euler(90, 90, 0) * gyro.attitude;
+
+        float angle = rotation.eulerAngles.z;
+
+        if (angle > 15 && angle < 180 - tiltTreshold)
         {
-            tiltValue = -1f;
+            tiltValue = 1; // Rotire spre dreapta
         }
-        else if(phoneTiltY < tiltTreshold)
+        else if (angle > 180 + tiltTreshold && angle < 345)
         {
-            tiltValue = 1f;
+            tiltValue = -1; // Rotire spre stânga
         }
         else
         {
-            tiltValue = 0f;
+            tiltValue = 0; // Nu există rotație sau rotație mică
         }
-
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer);
         //Debug.Log(tiltValue);
-
+        Debug.Log(angle);
         if (Input.touchCount >0)
         {
             Touch touch = Input.GetTouch(0);

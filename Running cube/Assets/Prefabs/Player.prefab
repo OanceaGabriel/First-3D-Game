@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48335260172ee1245b04242e6828f7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fw_Speed: 2000
-  side_Speed: 50
+  fw_Speed: 4000
+  side_Speed: 30
   jump_Force: 100
   raycastDistance: 0.1
   groundLayer:
@@ -218,8 +218,8 @@ MonoBehaviour:
   isGrounded: 0
   pressSpace: 0
   animator: {fileID: 7508546717401047634}
+  tiltTreshold: 5
   GroundCheck: {fileID: 0}
-  acceleration: 0
 --- !u!114 &6267526724819034078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651e87ad16ad6e149a94a51692987885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fw_Speed: 3000
+  fw_Speed: 4000
   side_Speed: 50
   jump_Force: 300
   test: 0

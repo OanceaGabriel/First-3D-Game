@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Pause_Game : MonoBehaviour
 {
-    // Start is called before the first frame update
     public static bool GameIsPaused = false;
     public GameObject pauseMenu;
 
@@ -38,5 +37,10 @@ public class Pause_Game : MonoBehaviour
     {
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void TimeStep1()
+    {
+        Time.timeScale = 1f;
     }
 }
