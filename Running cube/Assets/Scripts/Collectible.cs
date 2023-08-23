@@ -5,7 +5,7 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
 
-    [SerializeField] private int gemScore = 20;
+    [SerializeField] private int gemScore = 1;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
