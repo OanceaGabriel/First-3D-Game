@@ -26,7 +26,7 @@ public class Character_Controller_PC: MonoBehaviour
 
     public void Start()
     {
- 
+        
     }
     public void Move() //Metoda ce permite miscarea caracterului
     {
@@ -40,6 +40,8 @@ public class Character_Controller_PC: MonoBehaviour
         {
             Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
+
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
     }
     // Update is called once per frame

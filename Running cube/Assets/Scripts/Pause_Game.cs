@@ -31,12 +31,17 @@ public class Pause_Game : MonoBehaviour
         Time.timeScale = 1f;
         GameIsPaused = false;
         pauseMenu.SetActive(false);
+
+        FindObjectOfType<AudioManager>().Play("InGameMusic");
+        FindObjectOfType<AudioManager>().Stop("Pause");
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
         GameIsPaused = true;
+        FindObjectOfType<AudioManager>().Stop("InGameMusic");
+        FindObjectOfType<AudioManager>().Play("Pause");
     }
 
     public void TimeStep1()
