@@ -14,6 +14,7 @@ public class Game_Manager : MonoBehaviour
     {
         if (gameHasEnded == false)
         {
+            FindObjectOfType<AudioManager>().Play("Death");
             gameHasEnded = true;
             Invoke("Restart", restartDelay);
         }
@@ -37,6 +38,8 @@ public class Game_Manager : MonoBehaviour
 
     public void CompleteLevel()
     {
+        FindObjectOfType<AudioManager>().Stop("InGameMusic");
+        FindObjectOfType<AudioManager>().Play("LevelComplete");
         completeLevelUI.SetActive(true);
     }
 

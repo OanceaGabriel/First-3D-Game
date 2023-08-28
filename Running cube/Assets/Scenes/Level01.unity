@@ -1280,10 +1280,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7741724734492770376, guid: 4aa01f1d5c72d4e47a8c44e612a6b6fc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1528,8 +1524,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
+      propertyPath: fw_Speed
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
+      propertyPath: jump_Force
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: GroundCheck

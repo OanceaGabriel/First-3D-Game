@@ -36,6 +36,8 @@ public class EndCondition : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Obstacle") || collision.collider.gameObject.CompareTag("MovingObstacle"))
         {
+            FindObjectOfType<AudioManager>().Stop("InGameMusic");
+            //FindObjectOfType<AudioManager>().Play("Death");
             lost = true;
             GetComponent<Character_Controller_PC>().enabled = false;
             GetComponent<Character_Controller_Phone>().enabled = false;

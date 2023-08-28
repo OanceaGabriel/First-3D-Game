@@ -10,6 +10,7 @@ public class Collectible : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            FindObjectOfType<AudioManager>().Play("Collectible");
             Score.score += gemScore;
             Destroy(gameObject);
         }
