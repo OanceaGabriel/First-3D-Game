@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3502177842825002218
 MonoBehaviour:
@@ -50,52 +50,61 @@ MonoBehaviour:
     volume: 1
     pitch: 0.34
     loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: b3941a4be27ad2e49a99210673549b5b, type: 3}
     Name: InGameMusic
     volume: 0.13
     pitch: 1
     loop: 1
+    audioMixer: {fileID: 24300002, guid: aec1d1ef9945675438cc9804fd9ae57e, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 5c878c1d59b5171418de6fe08b80c8af, type: 3}
     Name: Death
     volume: 0.13
     pitch: 1
     loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 7944b33375662814a8fc83d0588a4af5, type: 3}
     Name: Collectible
     volume: 0.13
     pitch: 1
     loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: f491a5fe2ec4880428c5bbc5c13de7c1, type: 3}
     Name: GameComplete
     volume: 1
     pitch: 1
     loop: 0
+    audioMixer: {fileID: 24300002, guid: 10673f46265d70240b2dded1ec6262dc, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 8bdadb31daabda542916603d033deba7, type: 3}
     Name: MenuMusic
     volume: 1
     pitch: 1
     loop: 1
+    audioMixer: {fileID: 24300002, guid: 10673f46265d70240b2dded1ec6262dc, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 8fdee19fc810c4a4ebb969d99ef336f5, type: 3}
     Name: LevelComplete
     volume: 1
     pitch: 1
     loop: 1
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e6e53c990d4b8aa4fb2361f9265ebb60, type: 3}
     Name: Pause
     volume: 1
     pitch: 1
     loop: 1
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: 0dc58225b20ba784eb0bd1d093741bae, type: 3}
     Name: Button
     volume: 1
     pitch: 1
     loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}

@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
     private Scene scene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class AudioManager : MonoBehaviour
           {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
+            s.source.outputAudioMixerGroup = s.audioMixer;
 
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
