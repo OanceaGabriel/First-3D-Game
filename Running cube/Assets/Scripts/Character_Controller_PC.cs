@@ -57,11 +57,13 @@ public class Character_Controller_PC: MonoBehaviour
             {
                 pressSpace = true;
                 animator.SetBool("Should_Jump", true);
+                return;
             }
-            else if (Input.GetButtonUp("Jump"))
-            {
-                pressSpace = false;
-            }   
+        
+            //else if (Input.GetButtonUp("Jump"))
+           // {
+             pressSpace = false;
+            //}   
     }
 
     private void FixedUpdate()

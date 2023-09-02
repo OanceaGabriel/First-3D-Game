@@ -45,6 +45,7 @@ public class Game_Manager : MonoBehaviour
 
     public void BackToMenu ()
     {
+        Pause_Game.GameIsPaused = false;
         SceneManager.LoadScene(0);
         Score.score = 0;
     }

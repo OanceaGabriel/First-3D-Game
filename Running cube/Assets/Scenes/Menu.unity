@@ -159,10 +159,10 @@ RectTransform:
   m_Father: {fileID: 1814364169}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -8.1266, y: -50}
-  m_SizeDelta: {x: 170.1266, y: 51.266}
+  m_SizeDelta: {x: 70.1266, y: -48.734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48101130
 MonoBehaviour:
@@ -463,10 +463,10 @@ RectTransform:
   m_Father: {fileID: 1814364169}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -8.1266, y: 39}
-  m_SizeDelta: {x: 170.1266, y: 51.266}
+  m_SizeDelta: {x: 70.1266, y: -48.734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &95089920
 MonoBehaviour:
@@ -1212,10 +1212,10 @@ RectTransform:
   m_Father: {fileID: 1814364169}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -8.1266, y: -138}
-  m_SizeDelta: {x: 170.1266, y: 51.266}
+  m_SizeDelta: {x: 70.1266, y: -48.734}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &430600530
 MonoBehaviour:
@@ -1286,6 +1286,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1667083454}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &430600532
@@ -1501,10 +1513,10 @@ RectTransform:
   m_Father: {fileID: 1814364169}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.4043, y: 130}
-  m_SizeDelta: {x: 379.2039, y: 26.8455}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 5.4043007, y: 130}
+  m_SizeDelta: {x: 279.2039, y: -73.154495}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &569180452
 MonoBehaviour:
@@ -2625,10 +2637,10 @@ RectTransform:
   m_Father: {fileID: 1814364169}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.7034, y: 181}
-  m_SizeDelta: {x: 384.6056, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 2.7033997, y: 181}
+  m_SizeDelta: {x: 284.6056, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929477216
 MonoBehaviour:
@@ -4144,6 +4156,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1667083454}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1614763898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4803,10 +4827,10 @@ RectTransform:
   m_Father: {fileID: 1814364169}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 334, y: -151.63}
-  m_SizeDelta: {x: 73.5998, y: 24.0114}
+  m_SizeDelta: {x: -26.4002, y: -75.9886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047672100
 MonoBehaviour:
@@ -4879,17 +4903,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2047672104}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+      - m_Target: {fileID: 1667083454}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: Play
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
+          m_StringArgument: Button
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2047672102
 MonoBehaviour:
