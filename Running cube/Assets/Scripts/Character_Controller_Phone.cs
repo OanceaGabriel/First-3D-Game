@@ -4,6 +4,8 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Character_Controller_Phone: MonoBehaviour
 {
@@ -13,89 +15,83 @@ public class Character_Controller_Phone: MonoBehaviour
     [SerializeField] private float jump_Force;
 
     [Header("Allows jumping")]
-    [Range(0f, 0.3f)][SerializeField] private float raycastDistance = 0.1f;
-    [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private bool isGrounded;
-    [SerializeField] private bool pressSpace;
+    [Range(0f, 0.3f)][SerializeField] private float raycastDistance = 0.1f; //The length of the ray checking if the player is grounded
+    [SerializeField] private float swipeTreshhold = 300f; //Swipe more than this to jump 
+    [SerializeField] private LayerMask groundLayer; //you shoukd only jump from what is defined as beying Ground
+
+    [Header("Jump Debuging")]
+    [SerializeField] private bool isGrounded; //Is the player on the ground
+    [SerializeField] private bool pressSpace; //has the Jump comand been inputed
 
     [SerializeField] private Animator animator;
 
-    private float tiltValue = 0f;
+    private float sideDirection = 0f; // Changes the direction in which the player moves
 
-    [Header("Tilt tuning")]
-    [SerializeField] private float tiltTreshold;
+    [Header("Assign to enable movement")]
+    [SerializeField] private Transform GroundCheck; //Object from where the ray is casted towards the ground to check if player is grounded
+    [SerializeField] private Slider movementSlider; //Slider that moves player sideways
+    [SerializeField] private Joystick joystick; //Joystick that moves the player sideways
 
-    [SerializeField] private Transform GroundCheck;
 
-    private Gyroscope gyro;
-    private Quaternion rotation;
+    //Used to check for swiping in order to allow jump
+    private Vector2 startTouchPos;
+    private Vector2 endTouchPos;
 
-    public void Start()
-    {
-        gyro = Input.gyro;
-        gyro.enabled = true;
-
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-    }
-    public void Move() //Metoda ce permite miscarea caracterului
+    private int touchCount = 0; //if you have your had on the slider or joystick the second touch will be used for swiping, if you don't the first one will
+    public int controller = 0; //0 for slider or 1 for joystick
+    public void Move() //Metoda ce permite miscarea caracterului folosind slider-ul
     {
         //This moves the player forward
         GetComponent<Rigidbody>().AddForce(0, 0, fw_Speed * Time.deltaTime);
 
         //This moves the character sideways by using the side_Speed and the direction specified in the player movement script
-        GetComponent<Rigidbody>().AddForce(side_Speed * tiltValue * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+        GetComponent<Rigidbody>().AddForce(side_Speed * sideDirection * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 
+        //Jumps if the conditions are met
         if (pressSpace == true && isGrounded == true)
         {
-            //Debug.Log("Jump!");
+            Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
+            pressSpace = false;
         }
     }
     // Update is called once per frame
-
-
     void Update()
     {
-        // Obține rotația telefonului într-un mod compatibil cu orientarea ecranului
-        rotation = Quaternion.Euler(90, 90, 0) * gyro.attitude;
-
-        float angle = rotation.eulerAngles.z;
-
-        if (angle > 15 && angle < 180 - tiltTreshold)
+        if (controller != 0)
         {
-            tiltValue = 1; // Rotire spre dreapta
+            sideDirection = joystick.Horizontal;
         }
-        else if (angle > 180 + tiltTreshold && angle < 345)
+        isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer); //launches the ray to check if player is grounded
+        //Checks if you have your finger on the slider or joystick already
+        if (Input.touchCount  == 1)
         {
-            tiltValue = -1; // Rotire spre stânga
+            touchCount = 0;
         }
-        else
+        else if (Input.touchCount > 1)
         {
-            tiltValue = 0; // Nu există rotație sau rotație mică
-        }
-        isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer);
-        //Debug.Log(tiltValue);
-        Debug.Log(angle);
-        if (Input.touchCount >0)
-        {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.phase == TouchPhase.Began)
-            {
-                pressSpace = true;
-                animator.SetBool("Should_Jump", true);
-            }
-            else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
-            {
-                pressSpace = false;
-            }
+            touchCount = 1;
         }
         
+        //Checking for swiping up to allow for JUMP
+       if (Input.touchCount > 0 && Input.GetTouch(touchCount).phase == TouchPhase.Began)
+        {
+            startTouchPos = Input.GetTouch(touchCount).position;
+        }
+       if (Input.touchCount >0 && Input.GetTouch(touchCount).phase == TouchPhase.Ended)
+        {
+            endTouchPos = Input.GetTouch(touchCount).position;
+       
+            if (startTouchPos.y < endTouchPos.y && endTouchPos.y - startTouchPos.y > swipeTreshhold)
+            {  
+               pressSpace = true;
+            }
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
+            Move();
     }
 
     private void OnCollisionEnter(Collision ground)
@@ -106,5 +102,10 @@ public class Character_Controller_Phone: MonoBehaviour
         }
     }
 
+    public void SidewaysMovement (float value)
+    {
+        sideDirection = value;
+    }
 
+   
 }
