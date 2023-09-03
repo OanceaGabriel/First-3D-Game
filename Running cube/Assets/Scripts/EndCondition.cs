@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndCondition : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class EndCondition : MonoBehaviour
     void NextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Score.score = 0;
     }
 
     void OnTriggerEnter(Collider lvlEnded)
@@ -34,9 +36,12 @@ public class EndCondition : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Obstacle") || collision.collider.gameObject.CompareTag("MovingObstacle"))
         {
+            FindObjectOfType<AudioManager>().Stop("InGameMusic");
+            //FindObjectOfType<AudioManager>().Play("Death");
             lost = true;
             GetComponent<Character_Controller_PC>().enabled = false;
             GetComponent<Character_Controller_Phone>().enabled = false;
+            GetComponent<Character_Controller_Joystick>().enabled = false;
             FindObjectOfType<Game_Manager>().GameOver();
 
             foreach (GameObject obstacle in movingObs)

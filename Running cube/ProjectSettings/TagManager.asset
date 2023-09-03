@@ -9,11 +9,12 @@ TagManager:
   - LvlComplete
   - DirectionSwitch
   - MovingObstacle
+  - Joystick
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Joystick
   - Water
   - UI
   - Enviromant

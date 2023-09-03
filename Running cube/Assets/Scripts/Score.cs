@@ -7,8 +7,10 @@ public class Score : MonoBehaviour
 {
     public Transform player;
     public TextMeshProUGUI scoreTxt;
+
+    public static int score = 0;
     void Update()
     {
-        scoreTxt.text = player.position.z.ToString("0");
+        scoreTxt.text = score.ToString();
     }
 }

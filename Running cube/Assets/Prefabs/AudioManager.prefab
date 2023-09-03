@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &340511374756320629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5702173928886018329}
+  - component: {fileID: 3502177842825002218}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5702173928886018329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340511374756320629}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3502177842825002218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340511374756320629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f1617ab65efff48b76c15e719093e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: 6792e2af51e13684e81286bc3fa133d9, type: 3}
+    Name: Jump
+    volume: 1
+    pitch: 0.34
+    loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b3941a4be27ad2e49a99210673549b5b, type: 3}
+    Name: InGameMusic
+    volume: 0.13
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: 24300002, guid: aec1d1ef9945675438cc9804fd9ae57e, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5c878c1d59b5171418de6fe08b80c8af, type: 3}
+    Name: Death
+    volume: 0.13
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7944b33375662814a8fc83d0588a4af5, type: 3}
+    Name: Collectible
+    volume: 0.13
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f491a5fe2ec4880428c5bbc5c13de7c1, type: 3}
+    Name: GameComplete
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: 24300002, guid: 10673f46265d70240b2dded1ec6262dc, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8bdadb31daabda542916603d033deba7, type: 3}
+    Name: MenuMusic
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: 24300002, guid: 10673f46265d70240b2dded1ec6262dc, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8fdee19fc810c4a4ebb969d99ef336f5, type: 3}
+    Name: LevelComplete
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e6e53c990d4b8aa4fb2361f9265ebb60, type: 3}
+    Name: Pause
+    volume: 1
+    pitch: 1
+    loop: 1
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 0dc58225b20ba784eb0bd1d093741bae, type: 3}
+    Name: Button
+    volume: 1
+    pitch: 1
+    loop: 0
+    audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
+    source: {fileID: 0}
