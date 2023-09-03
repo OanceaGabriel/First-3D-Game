@@ -6,10 +6,16 @@ using UnityEngine.UI;
 
 public class Game_Manager : MonoBehaviour
 {
-
+    public Collectible collectible;
     bool gameHasEnded = false;
     public float restartDelay = 1f;
     public GameObject completeLevelUI;
+    public int totalFishCollected;
+
+    public void Update()
+    {
+        totalFishCollected = Score.score; //For storing how many fish you collected
+    }
     public void GameOver()
     {
         if (gameHasEnded == false)
@@ -48,6 +54,23 @@ public class Game_Manager : MonoBehaviour
         Pause_Game.GameIsPaused = false;
         SceneManager.LoadScene(0);
         Score.score = 0;
+    }
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveGame(this);
+        Debug.Log("SAVED" + this.totalFishCollected);
+    }
+
+    public void LoadGame()
+    {
+        PlayerData data=  SaveSystem.LoadPlayer();
+
+        totalFishCollected = data.fishCollectible;
+        Debug.Log(totalFishCollected);
+        Score.score = totalFishCollected;
+
+        //Debug.Log("Loaded" + this);
     }
 
     
