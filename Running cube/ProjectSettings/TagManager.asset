@@ -10,6 +10,7 @@ TagManager:
   - DirectionSwitch
   - MovingObstacle
   - Joystick
+  - LevelComplete
   layers:
   - Default
   - TransparentFX

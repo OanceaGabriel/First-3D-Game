@@ -17,13 +17,13 @@ public static class SaveSystem
         stream.Close();
     }
 
-    public static PlayerData LoadPlayer()
+    public static PlayerData LoadGame()
     {
         string path = Application.persistentDataPath + "/player.fun";
 
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter ();
+            BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream (path, FileMode.Open);
 
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
