@@ -17,7 +17,7 @@ public class Game_Manager : MonoBehaviour
 
     private void Start()
     {
-        //LoadGame();
+        LoadGame();
     }
 
     private void Awake()
