@@ -68,7 +68,7 @@ public class Character_Controller_Phone: MonoBehaviour
         {
             touchCount = 0;
         }
-        else if (Input.touchCount > 1)
+        else
         {
             touchCount = 1;
         }
