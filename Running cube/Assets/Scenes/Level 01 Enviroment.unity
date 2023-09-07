@@ -2545,26 +2545,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 409573562}
-    - target: {fileID: 7050586862658200358, guid: f58872bbfdf130a4fbda7aca3e08cad5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7050586862658200358, guid: f58872bbfdf130a4fbda7aca3e08cad5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330076370499529512, guid: f58872bbfdf130a4fbda7aca3e08cad5, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330076370499529512, guid: f58872bbfdf130a4fbda7aca3e08cad5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7330076370499529512, guid: f58872bbfdf130a4fbda7aca3e08cad5, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8716592724600396742, guid: f58872bbfdf130a4fbda7aca3e08cad5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3165,25 +3145,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: fw_Speed
-      value: 4000
-      objectReference: {fileID: 0}
-    - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: jump_Force
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: GroundCheck
       value: 
       objectReference: {fileID: 307638564}
-    - target: {fileID: 491204391472480541, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: raycastDistance
-      value: 0.001
-      objectReference: {fileID: 0}
     - target: {fileID: 1617188230324494845, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -3228,58 +3192,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4653932768124204384, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 5579915577445664430, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5579915577445664430, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267526724819034078, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: fw_Speed
-      value: 4000
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267526724819034078, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: joystick
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6267526724819034078, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6267526724819034078, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: GroundCheck
       value: 
       objectReference: {fileID: 307638564}
     - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: fw_Speed
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1460297439}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: controller
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: jump_Force
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: side_Speed
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
       propertyPath: GroundCheck
       value: 
@@ -3288,14 +3212,6 @@ PrefabInstance:
       propertyPath: movementSlider
       value: 
       objectReference: {fileID: 1692841050}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: swipeTreshhold
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 7189111493459424893, guid: c9de3efe47fc7274b99c12671b03b1a6, type: 3}
-      propertyPath: raycastDistance
-      value: 0.01
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3773,22 +3689,6 @@ PrefabInstance:
     - target: {fileID: 340511374756320629, guid: b360c70e14fcd8c4aa537306a63b26a6, type: 3}
       propertyPath: m_Name
       value: AudioManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3502177842825002218, guid: b360c70e14fcd8c4aa537306a63b26a6, type: 3}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 15d0a2d179092c049a32013232442783, type: 3}
-    - target: {fileID: 3502177842825002218, guid: b360c70e14fcd8c4aa537306a63b26a6, type: 3}
-      propertyPath: sounds.Array.data[6].loop
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3502177842825002218, guid: b360c70e14fcd8c4aa537306a63b26a6, type: 3}
-      propertyPath: sounds.Array.data[1].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3502177842825002218, guid: b360c70e14fcd8c4aa537306a63b26a6, type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5702173928886018329, guid: b360c70e14fcd8c4aa537306a63b26a6, type: 3}
       propertyPath: m_RootOrder

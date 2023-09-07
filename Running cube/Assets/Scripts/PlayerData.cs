@@ -13,19 +13,19 @@ public class PlayerData
     public float g_SavedVolume;
     public float s_SavedVolume;
 
-    public PlayerData(Game_Manager game_Manager)
+    public bool isUsingJoystick;
+
+    public PlayerData(Game_Manager game_Manager, AudioManager audioManager)
     {
         fishCollectible = game_Manager.totalFishCollected;
         currentLvl = Game_Manager.currentLvl;
 
-        
-            
+        isUsingJoystick = Game_Manager.isUsingJoystick;
+
+        audioManager.menuMusicMixer.GetFloat("MenuMusic", out m_SavedVolume);
+        audioManager.gameMusicMixer.GetFloat("GameMusic", out g_SavedVolume);
+        audioManager.soundEffectsMixer.GetFloat("Effects", out s_SavedVolume);
     }
 
-    public PlayerData(Settings_Menu settingsMenu)
-    {
-            settingsMenu.menuMusicMixer.GetFloat("MenuMusic", out m_SavedVolume);
-            settingsMenu.gameMusicMixer.GetFloat("GameMusic", out g_SavedVolume);
-            settingsMenu.soundEffectsMixer.GetFloat("Effects", out s_SavedVolume);
-    }
+   
 }

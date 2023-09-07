@@ -38,7 +38,7 @@ public class Character_Controller_Phone: MonoBehaviour
     private Vector2 endTouchPos;
 
     private int touchCount = 0; //if you have your had on the slider or joystick the second touch will be used for swiping, if you don't the first one will
-    public int controller = 0; //0 for slider or 1 for joystick
+    //public int controller = 0; //0 for slider or 1 for joystick
     public void Move() //Metoda ce permite miscarea caracterului folosind slider-ul
     {
         //This moves the player forward
@@ -58,8 +58,9 @@ public class Character_Controller_Phone: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (controller != 0)
+        if (Game_Manager.isUsingJoystick == true)
         {
+            //Debug.Log("USING JOYSTICK");
             sideDirection = joystick.Horizontal;
         }
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer); //launches the ray to check if player is grounded

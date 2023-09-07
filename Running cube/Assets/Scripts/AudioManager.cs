@@ -6,32 +6,51 @@ using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour
 {
 
-    public Sound[] sounds;
+    public Sound[] sounds; //Array containing the sounds in the sound list
     private Scene scene;
+
+    //The mixers that controll the overall sound volume for every category
+    public AudioMixer menuMusicMixer;
+    public AudioMixer gameMusicMixer;
+    public AudioMixer soundEffectsMixer;
+
+    private static AudioManager instance;
 
     // Start is called before the first frame update
     void Start()
     {
         scene = SceneManager.GetActiveScene();
 
-        if (scene.buildIndex > 0 && scene.buildIndex < 7) 
+        if (scene.name == "Menu")
         {
-            Play("InGameMusic");
+            Play("MenuMusic");
         }
-        else if(scene.buildIndex == 7)
+        else if(scene.name == "EndingScene")
         {
             Play("GameComplete");
         }
         else
         {
-            Play("MenuMusic");
+            Play("InGameMusic");
         }
+        
     }
 
     public void Awake()
     {
-          foreach(Sound s in sounds)
-          {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+        foreach (Sound s in sounds)
+        {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.outputAudioMixerGroup = s.audioMixer;
@@ -39,8 +58,7 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-            
-          }
+        }
     }
 
     public void Play(string name)
@@ -63,6 +81,21 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Stop();
+    }
+
+    public void MusicVolume(float m_Volume)
+    {
+        menuMusicMixer.SetFloat("MenuMusic", m_Volume);        
+    }
+
+    public void GameVolume(float g_Volume)
+    {
+        gameMusicMixer.SetFloat("GameMusic", g_Volume);
+    }
+
+    public void SoundEffects(float s_Volume)
+    {
+        soundEffectsMixer.SetFloat("Effects", s_Volume);
     }
 
 }
