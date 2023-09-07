@@ -15,12 +15,17 @@ public class PlayerData
 
     public PlayerData(Game_Manager game_Manager)
     {
-        fishCollectible = game_Manager.totalFishCollected;  
-        currentLvl = game_Manager.currentLvl;
+        fishCollectible = game_Manager.totalFishCollected;
+        currentLvl = Game_Manager.currentLvl;
 
-        //m_SavedVolume = settingsMenu.m_SavedVolume;
-        //g_SavedVolume = settingsMenu.g_SavedVolume;
-        //s_SavedVolume = settingsMenu.s_SavedVolume;
+        
+            
     }
-    
+
+    public PlayerData(Settings_Menu settingsMenu)
+    {
+            settingsMenu.menuMusicMixer.GetFloat("MenuMusic", out m_SavedVolume);
+            settingsMenu.gameMusicMixer.GetFloat("GameMusic", out g_SavedVolume);
+            settingsMenu.soundEffectsMixer.GetFloat("Effects", out s_SavedVolume);
+    }
 }

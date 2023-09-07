@@ -13,26 +13,17 @@ public class Game_Manager : MonoBehaviour
 
     //Variables that track player progress
     public int totalFishCollected = 0;
-    public int currentLvl = 1;
+    public static int currentLvl = 1;
+
+    public Settings_Menu settingsMenu;
+    public Slider menuMusicSlider;
 
     private void Start()
     {
-        LoadGame();
+        //LoadGame();
     }
 
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
-        DontDestroyOnLoad(gameObject);
-    }
+    
     public void GameOver()
     {
         if (gameHasEnded == false)
@@ -43,7 +34,7 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    public void LoadLevelSelector()
+    public static void LoadLevelSelector()
     {
         SceneManager.LoadScene("LevelSelection");
         Time.timeScale = 1f;
@@ -64,15 +55,23 @@ public class Game_Manager : MonoBehaviour
         }
     }
 
-    public void BackToMenu ()
+    public static void BackToMenu ()
     {
         Pause_Game.GameIsPaused = false;
         SceneManager.LoadScene(0);
     }
 
+    public static void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Pause_Game.GameIsPaused = false;
+        Time.timeScale = 1f;
+        Score.score = 0;
+    }
+
     public void SaveGame()
     {
-        SaveSystem.SaveGame(this);
+        SaveSystem.SaveGame(this, settingsMenu);
         Debug.Log("Saved level " + currentLvl + " fishes " + totalFishCollected);
     }
 
@@ -83,6 +82,20 @@ public class Game_Manager : MonoBehaviour
         totalFishCollected = data.fishCollectible;
         currentLvl = data.currentLvl;
         Debug.Log("Loaded level " + currentLvl + " fishes " + totalFishCollected);
+
+        //if (settingsMenu != null)
+        //{
+            //settingsMenu.menuMusicMixer.SetFloat("MenuMusic", data.m_SavedVolume);
+            //settingsMenu.gameMusicMixer.SetFloat("GameMusic", data.g_SavedVolume);
+            //settingsMenu.soundEffectsMixer.SetFloat("Effects", data.s_SavedVolume);
+        //}
+        if (menuMusicSlider != null) 
+        {
+            menuMusicSlider.value = data.m_SavedVolume;
+            Debug.Log("Loaded volume: " + data.m_SavedVolume);
+        }
+       
+        
     }
 
     

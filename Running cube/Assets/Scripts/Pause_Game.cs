@@ -12,19 +12,19 @@ public class Pause_Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(GameIsPaused)
-            {
-                Resume();
-                pauseMenu.SetActive(false);
-            }
-            else
-            {
-                Pause();
-                pauseMenu.SetActive(true);
-            }
-        }
+       //if(Input.GetKeyDown(KeyCode.Escape))
+       //{
+           // if(GameIsPaused)
+           // {
+             //   Resume();
+            //    pauseMenu.SetActive(false);
+           // }
+           // else
+           // {
+           //     Pause();
+             //   pauseMenu.SetActive(true);
+            //}
+        //}
     }
 
     public void Resume()
@@ -65,11 +65,5 @@ public class Pause_Game : MonoBehaviour
         Score.score = 0;
     }
 
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        GameIsPaused = false;
-        Time.timeScale = 1f;
-        Score.score = 0;
-    }
+   
 }
