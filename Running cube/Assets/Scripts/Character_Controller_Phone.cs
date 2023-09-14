@@ -86,6 +86,7 @@ public class Character_Controller_Phone: MonoBehaviour
             if (startTouchPos.y < endTouchPos.y && endTouchPos.y - startTouchPos.y > swipeTreshhold)
             {  
                pressSpace = true;
+               animator.SetBool("isJumping", true);
             }
         }
     }
@@ -99,7 +100,7 @@ public class Character_Controller_Phone: MonoBehaviour
     {
         if (ground.gameObject.CompareTag("Ground"))
         {
-            animator.SetBool("Should_Jump", false);
+            animator.SetBool("isJumping", false);
         }
     }
 
