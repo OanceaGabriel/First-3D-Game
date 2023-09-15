@@ -5,13 +5,6 @@ using UnityEngine;
 
 public class cameraMovement : MonoBehaviour
 {
-    //public Transform playerPos;
-    //public Vector3 cameraOffset;
-
-    //void Update()
-    //{
-    //  transform.position = playerPos.position + cameraOffset;
-    //}
     [SerializeField] private Vector3 Offset;
 
     private GameObject currentPlayer;

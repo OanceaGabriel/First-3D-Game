@@ -53,6 +53,7 @@ public class Character_Controller_Phone: MonoBehaviour
             Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
             pressSpace = false;
+            
         }
     }
     // Update is called once per frame
@@ -64,6 +65,7 @@ public class Character_Controller_Phone: MonoBehaviour
             sideDirection = joystick.Horizontal;
         }
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer); //launches the ray to check if player is grounded
+        animator.SetBool("isGrounded", isGrounded);
         //Checks if you have your finger on the slider or joystick already
         if (Input.touchCount  == 1)
         {
@@ -93,7 +95,7 @@ public class Character_Controller_Phone: MonoBehaviour
 
     private void FixedUpdate()
     {
-            Move();
+        Move();
     }
 
     private void OnCollisionEnter(Collision ground)
@@ -101,6 +103,7 @@ public class Character_Controller_Phone: MonoBehaviour
         if (ground.gameObject.CompareTag("Ground"))
         {
             animator.SetBool("isJumping", false);
+            animator.SetBool("isGrounded", true);
         }
     }
 
