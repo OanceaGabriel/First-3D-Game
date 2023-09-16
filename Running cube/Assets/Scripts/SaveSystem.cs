@@ -6,12 +6,12 @@ public static class SaveSystem
 {
     public static void SaveGame (Game_Manager gameManager)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
+        BinaryFormatter formatter = new();
         string path = Application.persistentDataPath + "/player.fun";
 
-        FileStream stream = new FileStream(path, FileMode.Create);
+        FileStream stream = new(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(gameManager);
+        PlayerData data = new(gameManager);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -23,8 +23,8 @@ public static class SaveSystem
 
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream (path, FileMode.Open);
+            BinaryFormatter formatter = new();
+            FileStream stream = new(path, FileMode.Open);
 
             PlayerData data = formatter.Deserialize(stream) as PlayerData;
             stream.Close();

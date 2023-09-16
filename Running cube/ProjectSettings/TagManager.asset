@@ -11,6 +11,7 @@ TagManager:
   - MovingObstacle
   - Joystick
   - LevelComplete
+  - ShopCharacter
   layers:
   - Default
   - TransparentFX
