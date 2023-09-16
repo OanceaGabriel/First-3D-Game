@@ -36,7 +36,7 @@ public class Game_Manager : MonoBehaviour
         if (scene.name != "Menu" && scene.name != "EndingScene")
         {
             Debug.Log("INTRU IN IF");
-            if (Game_Manager.isUsingJoystick)
+            if (isUsingJoystick)
             {
                 canvas.transform.Find("Fixed Joystick").gameObject.SetActive(true);
                 canvas.transform.Find("Slider").gameObject.SetActive(false);
@@ -90,7 +90,6 @@ public class Game_Manager : MonoBehaviour
         SaveGame();
         if (FindObjectOfType<Canvas>().CompareTag("LevelComplete"))
         {
-            
             canvas.transform.Find("LevelComplete").gameObject.SetActive(true);
         }
     }

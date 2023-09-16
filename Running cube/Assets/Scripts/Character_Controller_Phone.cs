@@ -110,6 +110,7 @@ public class Character_Controller_Phone: MonoBehaviour
     public void SidewaysMovement (float value)
     {
         sideDirection = value;
+        Debug.Log(sideDirection);
     }
 
    
