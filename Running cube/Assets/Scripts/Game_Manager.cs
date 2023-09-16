@@ -30,7 +30,7 @@ public class Game_Manager : MonoBehaviour
     private void Start()
     {
         scene = SceneManager.GetActiveScene();
-        LoadGame();
+        //LoadGame();
         canvas = FindObjectOfType<Canvas>();
 
         if (scene.name != "Menu" && scene.name != "EndingScene")
