@@ -589,13 +589,14 @@ GameObject:
   - component: {fileID: 339013483057117878}
   - component: {fileID: 3169206506485773028}
   - component: {fileID: 7004464250572175301}
+  - component: {fileID: 6636730075757314636}
   m_Layer: 0
   m_Name: Muskrat
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &644027910916855787
 Transform:
   m_ObjectHideFlags: 0
@@ -702,7 +703,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4950779065795438720}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 90e4e30a798402947808bc7f64800912, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -728,7 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48335260172ee1245b04242e6828f7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fw_Speed: 0
+  fw_Speed: 500
   side_Speed: 50
   jump_Force: 300
   raycastDistance: 0.1
@@ -752,6 +753,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50ff39f0303236d40b32b46a608b5696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6636730075757314636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950779065795438720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3939fc7c166aed945b5a3d10e3268479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7460354150513945985

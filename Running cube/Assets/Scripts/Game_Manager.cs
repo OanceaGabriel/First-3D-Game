@@ -101,7 +101,7 @@ public class Game_Manager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public static void Restart()
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Pause_Game.GameIsPaused = false;

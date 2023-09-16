@@ -395,6 +395,7 @@ GameObject:
   - component: {fileID: 4832195349351694358}
   - component: {fileID: 4309017378602632202}
   - component: {fileID: 9146796724386478931}
+  - component: {fileID: 2819919974894532814}
   m_Layer: 0
   m_Name: Gecko
   m_TagString: Player
@@ -486,7 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48335260172ee1245b04242e6828f7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fw_Speed: 0
+  fw_Speed: 500
   side_Speed: 50
   jump_Force: 300
   raycastDistance: 0.1
@@ -537,7 +538,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &9146796724386478931
 CapsuleCollider:
@@ -546,7 +547,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6842458599697738422}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 90e4e30a798402947808bc7f64800912, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -562,6 +563,18 @@ CapsuleCollider:
   m_Height: 1.0556203
   m_Direction: 2
   m_Center: {x: -0.0007890761, y: 0.19128984, z: 0.060948074}
+--- !u!114 &2819919974894532814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6842458599697738422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3939fc7c166aed945b5a3d10e3268479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7657876676996022963
 GameObject:
   m_ObjectHideFlags: 0

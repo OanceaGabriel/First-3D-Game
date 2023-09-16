@@ -8,7 +8,7 @@ public class EndCondition : MonoBehaviour
 {
     private bool lost = false;
     private GameObject[] movingObs;
-    public Transform Player;
+    //public Transform Player;
     
     public void Start()
     {
@@ -34,23 +34,13 @@ public class EndCondition : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.gameObject.CompareTag("Obstacle") || collision.collider.gameObject.CompareTag("MovingObstacle"))
+        if (collision.collider.gameObject.CompareTag("Obstacle"))
         {
             FindObjectOfType<AudioManager>().Stop("InGameMusic");
-            //FindObjectOfType<AudioManager>().Play("Death");
+            FindObjectOfType<AudioManager>().Play("Death");
             lost = true;
-            GetComponent<Character_Controller_PC>().enabled = false;
             GetComponent<Character_Controller_Phone>().enabled = false;
-            GetComponent<Character_Controller_Joystick>().enabled = false;
             FindObjectOfType<Game_Manager>().GameOver();
-
-            foreach (GameObject obstacle in movingObs)
-            {
-                Rotate rotateScript = obstacle.GetComponent<Rotate>();
-                MoveSideways moveSideways = obstacle.GetComponent<MoveSideways>();
-                rotateScript.enabled = false;
-                moveSideways.enabled = false;
-            }
         }
     }
     private void Update()

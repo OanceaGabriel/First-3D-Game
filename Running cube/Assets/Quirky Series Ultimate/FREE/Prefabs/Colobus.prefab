@@ -585,11 +585,12 @@ GameObject:
   - component: {fileID: 4992758198669102562}
   - component: {fileID: 1148682066818756815}
   - component: {fileID: 8317233869622344689}
-  - component: {fileID: 7278523399514550306}
   - component: {fileID: 1850254902941761825}
+  - component: {fileID: 6559572299328441819}
   - component: {fileID: 586863594911169426}
   - component: {fileID: 8718540658134770046}
   - component: {fileID: 598343794506416498}
+  - component: {fileID: 3268000862956464855}
   m_Layer: 0
   m_Name: Colobus
   m_TagString: Player
@@ -669,29 +670,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &7278523399514550306
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6182162820492919152}
-  m_Material: {fileID: 13400000, guid: 90e4e30a798402947808bc7f64800912, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32263845
-  m_Height: 0.92873544
-  m_Direction: 2
-  m_Center: {x: 0, y: 0.30609554, z: -0.045455128}
 --- !u!135 &1850254902941761825
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -713,6 +691,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.2083106
   m_Center: {x: 0, y: 0.60658455, z: 0.36897612}
+--- !u!135 &6559572299328441819
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182162820492919152}
+  m_Material: {fileID: 13400000, guid: 90e4e30a798402947808bc7f64800912, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.3006953
+  m_Center: {x: 0, y: 0.28554708, z: -0.004314363}
 --- !u!54 &586863594911169426
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -752,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48335260172ee1245b04242e6828f7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fw_Speed: 0
+  fw_Speed: 500
   side_Speed: 50
   jump_Force: 300
   raycastDistance: 0.1
@@ -776,6 +775,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50ff39f0303236d40b32b46a608b5696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3268000862956464855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182162820492919152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3939fc7c166aed945b5a3d10e3268479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7853299950699460719
