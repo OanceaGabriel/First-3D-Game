@@ -1,36 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 
 public class Shop : MonoBehaviour
 {
-    // Start is called before the first frame update
 
+    // [SerializeField]
     private int totalNrOfFish;
-    private ShopOption[] shopOptions;
+
+    //[SerializeField]
+    private PlayerCharacter[] characters;
     
     void Start()
     {
-        totalNrOfFish = FindAnyObjectByType<Game_Manager>().totalFishCollected;
-        shopOptions = Array.ConvertAll(
-            GameObject.FindGameObjectsWithTag("ShopCharacter"), 
-            new Converter<GameObject, ShopOption>(GameObjectToShopOption)
-        );
-        Debug.Log("options: ");
-        foreach (ShopOption shopOption in shopOptions) {
-            Debug.Log("Option value: " + shopOption.OptionValue);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        characters = Game_Manager.characters;
+        Debug.Log("nr of characters: " + characters.Length);
+        Debug.Log("First: " + characters[0].characterName + ", " + characters[0].value);
+        // Invoke(nameof(IntializeCharacterArray), 1);
         
     }
 
-    private static ShopOption GameObjectToShopOption(GameObject gameObject) {
-        Debug.Log("Game object name: " + gameObject.name);
-        return GameObject.Find(gameObject.name).GetComponent<ShopOption>(); 
+    private void IntializeCharacterArray() {
+        
     }
 }
