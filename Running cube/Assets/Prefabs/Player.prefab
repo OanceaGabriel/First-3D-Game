@@ -39,7 +39,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2357792302105207713
 MeshFilter:
@@ -137,7 +137,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &6124339040747565833
 MonoBehaviour:
@@ -180,15 +180,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579915577445664430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 662666cea0fc95d448a163ed24ffef49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fw_Speed: 4000
   side_Speed: 50
-  jump_Force: 70
-  raycastDistance: 0.1
+  jump_Force: 300
+  raycastDistance: 0.001
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -203,23 +203,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5579915577445664430}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48335260172ee1245b04242e6828f7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fw_Speed: 4000
+  fw_Speed: 0
   side_Speed: 30
-  jump_Force: 100
-  raycastDistance: 0.1
+  jump_Force: 300
+  raycastDistance: 0.01
+  swipeTreshhold: 300
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
   isGrounded: 0
   pressSpace: 0
   animator: {fileID: 7508546717401047634}
-  tiltTreshold: 5
   GroundCheck: {fileID: 0}
+  movementSlider: {fileID: 0}
+  joystick: {fileID: 0}
 --- !u!114 &6267526724819034078
 MonoBehaviour:
   m_ObjectHideFlags: 0

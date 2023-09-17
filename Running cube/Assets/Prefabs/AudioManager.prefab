@@ -54,14 +54,14 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: b3941a4be27ad2e49a99210673549b5b, type: 3}
     Name: InGameMusic
-    volume: 0.13
+    volume: 0
     pitch: 1
     loop: 1
     audioMixer: {fileID: 24300002, guid: aec1d1ef9945675438cc9804fd9ae57e, type: 2}
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 5c878c1d59b5171418de6fe08b80c8af, type: 3}
+  - clip: {fileID: 8300000, guid: 15d0a2d179092c049a32013232442783, type: 3}
     Name: Death
-    volume: 0.13
+    volume: 1
     pitch: 1
     loop: 0
     audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
@@ -80,7 +80,7 @@ MonoBehaviour:
     loop: 0
     audioMixer: {fileID: 24300002, guid: 10673f46265d70240b2dded1ec6262dc, type: 2}
     source: {fileID: 0}
-  - clip: {fileID: 8300000, guid: 8bdadb31daabda542916603d033deba7, type: 3}
+  - clip: {fileID: 8300000, guid: c03c7976165e1e740beb9aca0d1472f1, type: 3}
     Name: MenuMusic
     volume: 1
     pitch: 1
@@ -91,7 +91,7 @@ MonoBehaviour:
     Name: LevelComplete
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
     audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: e6e53c990d4b8aa4fb2361f9265ebb60, type: 3}
@@ -108,3 +108,6 @@ MonoBehaviour:
     loop: 0
     audioMixer: {fileID: 24300002, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}
     source: {fileID: 0}
+  menuMusicMixer: {fileID: 24100000, guid: 10673f46265d70240b2dded1ec6262dc, type: 2}
+  gameMusicMixer: {fileID: 24100000, guid: aec1d1ef9945675438cc9804fd9ae57e, type: 2}
+  soundEffectsMixer: {fileID: 24100000, guid: 78f5d1df56397e54f95eede79d72dc71, type: 2}

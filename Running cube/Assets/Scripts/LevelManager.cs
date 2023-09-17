@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(levelIndex > FindObjectOfType<Game_Manager>().currentLvl)
+        if(levelIndex > Game_Manager.currentLvl)
         {
             Debug.Log(this.name);
             this.gameObject.SetActive(false);

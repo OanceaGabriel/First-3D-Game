@@ -4,14 +4,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveGame (Game_Manager gameManager)
+    public static void SaveGame (Game_Manager gameManager, AudioManager audioManager)
     {
         BinaryFormatter formatter = new();
         string path = Application.persistentDataPath + "/player.fun";
 
         FileStream stream = new(path, FileMode.Create);
 
-        PlayerData data = new(gameManager);
+        PlayerData data = new PlayerData(gameManager, audioManager);
 
         formatter.Serialize(stream, data);
         stream.Close();

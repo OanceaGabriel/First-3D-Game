@@ -38,7 +38,7 @@ public class Character_Controller_Phone: MonoBehaviour
     private Vector2 endTouchPos;
 
     private int touchCount = 0; //if you have your had on the slider or joystick the second touch will be used for swiping, if you don't the first one will
-    public int controller = 0; //0 for slider or 1 for joystick
+    //public int controller = 0; //0 for slider or 1 for joystick
     public void Move() //Metoda ce permite miscarea caracterului folosind slider-ul
     {
         //This moves the player forward
@@ -53,16 +53,19 @@ public class Character_Controller_Phone: MonoBehaviour
             Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
             pressSpace = false;
+            
         }
     }
     // Update is called once per frame
     void Update()
     {
-        if (controller != 0)
+        if (Game_Manager.isUsingJoystick == true)
         {
+            //Debug.Log("USING JOYSTICK");
             sideDirection = joystick.Horizontal;
         }
         isGrounded = Physics.Raycast(GroundCheck.position, Vector3.down, raycastDistance, groundLayer); //launches the ray to check if player is grounded
+        animator.SetBool("isGrounded", isGrounded);
         //Checks if you have your finger on the slider or joystick already
         if (Input.touchCount  == 1)
         {
@@ -85,20 +88,22 @@ public class Character_Controller_Phone: MonoBehaviour
             if (startTouchPos.y < endTouchPos.y && endTouchPos.y - startTouchPos.y > swipeTreshhold)
             {  
                pressSpace = true;
+               animator.SetBool("isJumping", true);
             }
         }
     }
 
     private void FixedUpdate()
     {
-            Move();
+        Move();
     }
 
     private void OnCollisionEnter(Collision ground)
     {
         if (ground.gameObject.CompareTag("Ground"))
         {
-            animator.SetBool("Should_Jump", false);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isGrounded", true);
         }
     }
 

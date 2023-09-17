@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6204167678523311480}
   - component: {fileID: 5554716466748499276}
   - component: {fileID: 5376960827603573730}
-  - component: {fileID: 2737777230670644530}
+  - component: {fileID: 5012402308947419581}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5554716466748499276
 Camera:
@@ -47,7 +47,7 @@ Camera:
   m_BackGroundColor: {r: 0.9568628, g: 0.7960785, b: 0.77647066, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
@@ -67,7 +67,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 58.75477
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -93,7 +93,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082666215668475807}
   m_Enabled: 1
---- !u!114 &2737777230670644530
+--- !u!114 &5012402308947419581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,8 +102,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2082666215668475807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38495cbf8975e341b751adbca73e4b0, type: 3}
+  m_Script: {fileID: 11500000, guid: c03e42ad1325c194f88d814d7ad3cf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {fileID: 0}
-  cameraOffset: {x: 0, y: 1.4, z: -5}
+  Offset: {x: 0, y: -1, z: 3.5}
