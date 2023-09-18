@@ -14,7 +14,7 @@ public class PlayerData
     public float s_SavedVolume;
 
     public bool isUsingJoystick;
-    public PlayerCharacter[] characters;
+    public PlayerCharacterSerializable[] characters;
 
     public PlayerData(Game_Manager game_Manager, AudioManager audioManager)
     {

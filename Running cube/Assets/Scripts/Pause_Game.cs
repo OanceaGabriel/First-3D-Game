@@ -61,7 +61,7 @@ public class Pause_Game : MonoBehaviour
     public void BackToMenu()
     {
         GameIsPaused = false;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Menu");
         Score.score = 0;
     }
 
