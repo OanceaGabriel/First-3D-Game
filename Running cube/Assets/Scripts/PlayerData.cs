@@ -14,6 +14,7 @@ public class PlayerData
     public float s_SavedVolume;
 
     public bool isUsingJoystick;
+    public PlayerCharacter[] characters;
 
     public PlayerData(Game_Manager game_Manager, AudioManager audioManager)
     {
@@ -25,6 +26,8 @@ public class PlayerData
         audioManager.menuMusicMixer.GetFloat("MenuMusic", out m_SavedVolume);
         audioManager.gameMusicMixer.GetFloat("GameMusic", out g_SavedVolume);
         audioManager.soundEffectsMixer.GetFloat("Effects", out s_SavedVolume);
+
+        characters = Game_Manager.characters;
     }
 
    

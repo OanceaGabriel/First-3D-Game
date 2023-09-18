@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,14 +28,16 @@ public class Game_Manager : MonoBehaviour
     public Toggle joystickToggle;
 
     private Scene scene;
+    public static PlayerCharacter[] characters = new PlayerCharacter[]{};
+    public static PlayerCharacter characterEquipped;
 
-    private void Start()
+    void Start()
     {
         scene = SceneManager.GetActiveScene();
         //LoadGame();
         canvas = FindObjectOfType<Canvas>();
 
-        if (scene.name != "Menu" && scene.name != "EndingScene")
+        if (scene.name != "Menu" && scene.name != "EndingScene" && scene.name != "Shop")
         {
             Debug.Log("INTRU IN IF");
             if (isUsingJoystick)
@@ -133,7 +137,32 @@ public class Game_Manager : MonoBehaviour
             gameMusicSlider.value = data.g_SavedVolume;
             soundEffectsSlider.value = data.s_SavedVolume;
 
+            GameObject[] gameCharacters = GameObject.FindGameObjectsWithTag("Player");
+            Debug.Log("Game characters: " + gameCharacters.Length);
+            if (data.characters == null || data.characters.Length == 0) {
+                Debug.Log("Data characters are null or empty");
+                foreach(GameObject gameObject in gameCharacters) {
+                    Debug.Log("Character name: " + gameObject.name);
+                    Debug.Log("Character scene: " + gameObject.scene.name);
+                    // gameObject.SetActive(gameCharacters.First() == gameObject);
+                    if(gameObject.scene.name == "Menu") {
+                        Debug.Log("Character scene is Menu");
+                        PlayerCharacter playerCharacter = gameObject.GetComponent<PlayerCharacter>();
+                        playerCharacter.equipped = gameCharacters.First() == gameObject;
+                        characters.Append(playerCharacter);
+                    }                   
+                }
+            } else {
+                Debug.Log("Data characters not null or empty");
+                characters = data.characters;
+                characterEquipped = characters.Where(c => c.equipped).First();
+
+            }
+            
+            Debug.Log("game manager characters after init: " + characters.Length);
+
             Debug.Log("Loaded menu: " + data.m_SavedVolume + "game " + data.g_SavedVolume + "sound " + data.s_SavedVolume);
+        
         }
     } 
 }

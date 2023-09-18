@@ -1,0 +1,7 @@
+*.log
+packages-lock.json
+Settings.json
+settings.json
+extensions.json
+launch.json
+*.dwlt
