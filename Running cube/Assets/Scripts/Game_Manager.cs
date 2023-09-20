@@ -28,43 +28,35 @@ public class Game_Manager : MonoBehaviour
     public Toggle joystickToggle;
 
     private Scene scene;
-    public static PlayerCharacter[] characters = new PlayerCharacter[]{};
-    public static PlayerCharacter characterEquipped;
+    public static PlayerCharacterSerializable[] characters = new PlayerCharacterSerializable[]{};
+    public static PlayerCharacterSerializable characterEquipped;
+    public static AudioManager audioManager;
 
     void Start()
     {
         scene = SceneManager.GetActiveScene();
-        //LoadGame();
+        audioManager = FindObjectOfType<AudioManager>();
+        LoadGame();
         canvas = FindObjectOfType<Canvas>();
 
         if (scene.name != "Menu" && scene.name != "EndingScene" && scene.name != "Shop")
         {
             Debug.Log("INTRU IN IF");
-            if (isUsingJoystick)
-            {
-                canvas.transform.Find("Fixed Joystick").gameObject.SetActive(true);
-                canvas.transform.Find("Slider").gameObject.SetActive(false);
-            }
-            else
-            {
-                canvas.transform.Find("Fixed Joystick").gameObject.SetActive(false);
-                canvas.transform.Find("Slider").gameObject.SetActive(true);
-            }
+            canvas.transform.Find("Fixed Joystick").gameObject.SetActive(isUsingJoystick);
+            canvas.transform.Find("Slider").gameObject.SetActive(!isUsingJoystick);
         }
     }
 
     public void IsUsingJoystick (bool usingJoystick)
     {
         isUsingJoystick = usingJoystick;
-        sliderToggle.isOn =! usingJoystick;
-        //Debug.Log(isUsingJoystick);
+        sliderToggle.isOn = !usingJoystick;
     }
 
     public void isUsingSlider (bool usingSlider)
     {
-        isUsingJoystick =! usingSlider;
-        joystickToggle.isOn =! usingSlider;
-        //Debug.Log(isUsingJoystick);
+        isUsingJoystick = !usingSlider;
+        joystickToggle.isOn = !usingSlider;
     }
 
     
@@ -72,7 +64,7 @@ public class Game_Manager : MonoBehaviour
     {
         if (gameHasEnded == false)
         {
-            FindObjectOfType<AudioManager>().Play("Death");
+            audioManager.Play("Death");
             gameHasEnded = true;
             Invoke("Restart", restartDelay);
         }
@@ -87,13 +79,14 @@ public class Game_Manager : MonoBehaviour
 
     public void CompleteLevel()
     {
-        FindObjectOfType<AudioManager>().Stop("InGameMusic");
-        FindObjectOfType<AudioManager>().Play("LevelComplete");
+        audioManager.Stop("InGameMusic");
+        audioManager.Play("LevelComplete");
         currentLvl += 1;
         totalFishCollected += Score.score;
         SaveGame();
         if (FindObjectOfType<Canvas>().CompareTag("LevelComplete"))
         {
+            
             canvas.transform.Find("LevelComplete").gameObject.SetActive(true);
         }
     }
@@ -114,7 +107,7 @@ public class Game_Manager : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame(this, FindObjectOfType<AudioManager>());
+        SaveSystem.SaveGame(this, audioManager);
         Debug.Log("Saved level " + currentLvl + " fishes " + totalFishCollected + "Joystick: " + isUsingJoystick);
     }
 
@@ -122,14 +115,12 @@ public class Game_Manager : MonoBehaviour
     {
         if (scene.name == "Menu")
         {
-            PlayerData data = SaveSystem.LoadGame();
+            PlayerData data = SaveSystem.LoadGame(this, audioManager);
+            Debug.Log("Loaded data: " + data.characters);
 
             totalFishCollected = data.fishCollectible;
             currentLvl = data.currentLvl;
             isUsingJoystick = data.isUsingJoystick;
-
-            //joystickToggle.isOn = data.isUsingJoystick;
-            //sliderToggle.isOn = !data.isUsingJoystick;
 
             Debug.Log("Loaded level " + currentLvl + " fishes " + totalFishCollected + "joystick" + isUsingJoystick);
 
@@ -138,27 +129,22 @@ public class Game_Manager : MonoBehaviour
             soundEffectsSlider.value = data.s_SavedVolume;
 
             GameObject[] gameCharacters = GameObject.FindGameObjectsWithTag("Player");
-            Debug.Log("Game characters: " + gameCharacters.Length);
             if (data.characters == null || data.characters.Length == 0) {
-                Debug.Log("Data characters are null or empty");
+                Debug.Log("Data characters null or empty");
                 foreach(GameObject gameObject in gameCharacters) {
-                    Debug.Log("Character name: " + gameObject.name);
-                    Debug.Log("Character scene: " + gameObject.scene.name);
-                    // gameObject.SetActive(gameCharacters.First() == gameObject);
-                    if(gameObject.scene.name == "Menu") {
-                        Debug.Log("Character scene is Menu");
-                        PlayerCharacter playerCharacter = gameObject.GetComponent<PlayerCharacter>();
-                        playerCharacter.equipped = gameCharacters.First() == gameObject;
-                        characters.Append(playerCharacter);
-                    }                   
+                    PlayerCharacter playerCharacter = gameObject.GetComponent<PlayerCharacter>();
+                    PlayerCharacterSerializable serializable = new(playerCharacter.value, 
+                        playerCharacter.bought, gameObject.name == "Pudu", playerCharacter.characterName
+                    );
+                    characters = characters.Append(serializable).ToArray();                   
                 }
             } else {
                 Debug.Log("Data characters not null or empty");
                 characters = data.characters;
-                characterEquipped = characters.Where(c => c.equipped).First();
+                characterEquipped = characters.Where(c => c.Equipped).First();
 
             }
-            
+         
             Debug.Log("game manager characters after init: " + characters.Length);
 
             Debug.Log("Loaded menu: " + data.m_SavedVolume + "game " + data.g_SavedVolume + "sound " + data.s_SavedVolume);

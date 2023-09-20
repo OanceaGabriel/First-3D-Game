@@ -12,7 +12,7 @@ public class Shop : MonoBehaviour
     private int totalNrOfFish;
 
     //[SerializeField]
-    private PlayerCharacter[] characters;
+    private PlayerCharacterSerializable[] characters;
     
     void Start()
     {
