@@ -17,7 +17,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         characters = Game_Manager.characters;
-        Debug.Log("nr of characters: " + characters.Length);
+        Debug.Log("nr of characters from shop: " + characters.Length);
         Debug.Log("First: " + characters[0].characterName + ", " + characters[0].value);
         // Invoke(nameof(IntializeCharacterArray), 1);
         

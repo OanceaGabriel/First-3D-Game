@@ -2121,7 +2121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 25
+  value: 2
   bought: 0
   equipped: 0
   characterName: Gecko
@@ -2574,9 +2574,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 100
-  bought: 0
-  equipped: 0
+  value: 0
+  bought: 1
+  equipped: 1
   characterName: Pudu
 --- !u!1 &649313000
 GameObject:
@@ -3230,7 +3230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 50
+  value: 1
   bought: 0
   equipped: 0
   characterName: Colobus
@@ -3997,7 +3997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 30
+  value: 3
   bought: 0
   equipped: 0
   characterName: Muskrat
@@ -4294,7 +4294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 33
+  value: 6
   bought: 0
   equipped: 0
   characterName: Taipan
@@ -6603,7 +6603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 33
+  value: 5
   bought: 0
   equipped: 0
   characterName: Squid
@@ -6624,7 +6624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45326015b70b3b04a9aa66756d7ba57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 78
+  value: 4
   bought: 0
   equipped: 0
   characterName: Sparrow

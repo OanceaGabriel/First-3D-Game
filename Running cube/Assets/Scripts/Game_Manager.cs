@@ -116,7 +116,6 @@ public class Game_Manager : MonoBehaviour
         if (scene.name == "Menu")
         {
             PlayerData data = SaveSystem.LoadGame(this, audioManager);
-            Debug.Log("Loaded data: " + data.characters);
 
             totalFishCollected = data.fishCollectible;
             currentLvl = data.currentLvl;
@@ -141,8 +140,8 @@ public class Game_Manager : MonoBehaviour
             } else {
                 Debug.Log("Data characters not null or empty");
                 characters = data.characters;
-                characterEquipped = characters.Where(c => c.Equipped).First();
-
+                characterEquipped = characters.Where(c => c.equipped).First();
+                Debug.Log("Character equipped: " + characterEquipped.characterName);
             }
          
             Debug.Log("game manager characters after init: " + characters.Length);
