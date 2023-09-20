@@ -8,15 +8,14 @@ public class Tutorial_Manager : MonoBehaviour
 {
     [SerializeField] private GameObject backgroundPanel;
     [SerializeField] private GameObject introductionPanel;
-    [SerializeField] private GameObject movementPanel;
+    //[SerializeField] private GameObject movementPanel;
     [SerializeField] private Canvas tutorialCanvas;
 
     private Image image;
     private Animator animator;
 
     private bool once = true;
-    private bool onceTutorial2 = true;
-    private bool onceTutorial3 = true;
+    private float tutorialDelay = 1.5f;
 
     // Update is called once per frame
 
@@ -27,30 +26,35 @@ public class Tutorial_Manager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.touchCount > 0 && introductionPanel.gameObject.activeInHierarchy)
+        Debug.Log(animator.GetCurrentAnimatorStateInfo(1).normalizedTime);
+        if (IsAnimationFinished(tutorialDelay) && AnimationName("Tutorial_1"))
         {
             animator.SetBool("fade", false);
             backgroundPanel.transform.Find("Introduction").gameObject.SetActive(false);
             Time.timeScale = 1.0f;
-            onceTutorial2 = false;
         }
-
-        if (Input.touchCount > 0 && !onceTutorial2)
+        
+        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_2")) 
         {
             animator.SetBool("fade", false);
             animator.SetBool("tutorial2", false);
             image.enabled = false;
             Time.timeScale = 1f;
-            onceTutorial3 = false;
-            backgroundPanel.transform.Find("Movement").gameObject.SetActive(false);
         }
 
-        if (Input.touchCount > 0 && !onceTutorial3)
+        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_3_Jump"))  
         {
             animator.SetBool("fade", false);
             animator.SetBool("tutorial3", false);
             image.enabled = false;
-            backgroundPanel.transform.Find("Movement").gameObject.SetActive(false);
+            Time.timeScale = 1f;
+        }
+
+        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_4"))
+        {
+            animator.SetBool("fade", false);
+            animator.SetBool("tutorial3", false);
+            image.enabled = false;
             Time.timeScale = 1f;
         }
     }
@@ -67,9 +71,9 @@ public class Tutorial_Manager : MonoBehaviour
 
         if (collider.name == "Tutorial_2" && !once)
         {
-            backgroundPanel.transform.Find("Movement").gameObject.SetActive(true);
             animator.SetBool("fade", true);
             animator.SetBool("tutorial2", true);
+            //onceTutorial2 = false;
             image.enabled = true;
             Time.timeScale = 0f;
             once = true;
@@ -77,14 +81,29 @@ public class Tutorial_Manager : MonoBehaviour
 
         if (collider.name == "Tutorial_3" && once)
         {
-            backgroundPanel.transform.Find("Movement").gameObject.SetActive(true);
             image.enabled = true;
             animator.SetBool("fade", true);
             animator.SetBool("tutorial3", true);
-            Time.timeScale = 0f;
-            onceTutorial3 = false;
             once = false;
+            Time.timeScale = 0f;
         }
-        
+
+        if (collider.name == "Tutorial_4" && !once)
+        {
+            image.enabled = true;
+            animator.SetBool("fade", true);
+            animator.SetBool("tutorial4", true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public bool IsAnimationFinished(float delay)
+    {
+        return animator.GetCurrentAnimatorStateInfo(1).normalizedTime >= delay;
+    }
+
+    public bool AnimationName(string name)
+    {
+        return animator.GetCurrentAnimatorStateInfo(1).IsName(name);
     }
 }
