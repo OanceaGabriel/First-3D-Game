@@ -16,13 +16,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Joystick
+  - 
   - Water
   - UI
   - Enviromant
   - Ground
   - Player
-  - 
+  - Joystick
   - 
   - 
   - 
@@ -48,4 +48,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Hand
+    uniqueID: 3247230081
     locked: 0
