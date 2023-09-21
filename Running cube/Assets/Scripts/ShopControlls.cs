@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class ShopControlls : MonoBehaviour
 
     void Start()
     {
-        characterIndex = this.transform.childCount;
+        characterIndex = transform.childCount;
         Debug.Log("caractere: " + characterIndex);
     }
 
@@ -36,26 +37,57 @@ public class ShopControlls : MonoBehaviour
 
             if (startTouchPos.x < endTouchPos.x)
             {
-                this.transform.Translate(2, 0, 0);
+                transform.Translate(2, 0, 0);
                 
             }
             else
             {
-                this.transform.Translate(-2, 0, 0);
+                transform.Translate(-2, 0, 0);
                 
             }
         }
-        if (this.transform.position.x == characterIndex * 2 + 2)
+        if (transform.position.x == characterIndex * 2 + 2)
         {
-            this.transform.Translate(0, 0, 0);
+            transform.Translate(0, 0, 0);
         }
-        else if (this.transform.position.x == -2)
+        else if (transform.position.x == -2)
         {
-            this.transform.Translate(characterIndex * 2 - 2, 0, 0);
+            transform.Translate(characterIndex * 2 - 2, 0, 0);
         }
 
-        currentCharacter = ((this.transform.position.x) / 2);
+        currentCharacter = transform.position.x / 2;
         //Debug.Log(currentCharacter);
 
+    }
+
+    public void EquipCharacter() {
+        PlayerCharacterSerializable[] gameCharacters = Game_Manager.characters;
+
+        // Getting current caracter GameObject
+        GameObject currentCharacterObject = transform.GetChild((int)currentCharacter).gameObject;
+        
+        // Getting character that will be equipped and the current equipped character, together with their indexes
+        PlayerCharacterSerializable player = gameCharacters.Where(p => p.characterName == currentCharacterObject.name).First();
+        PlayerCharacterSerializable currentEquippedCharacter = gameCharacters.Where(p => p.equipped == true).First();
+        int playerIndex = Array.FindIndex(gameCharacters, p => p.characterName == player.characterName);
+        int currentEquippedCharacterIndex = Array.FindIndex(gameCharacters, p => p.characterName == currentEquippedCharacter.characterName);
+        
+        // Update equipped boolean values for both and save in array
+        Game_Manager.characters[playerIndex].equipped = true;
+        Game_Manager.characters[currentEquippedCharacterIndex].equipped = false;
+        Game_Manager.characterEquipped = player;
+
+        // Save the updated array in player.fun file
+        SaveSystem.SaveGame();
+    }
+
+    public void BuyCharacter() {
+        PlayerCharacterSerializable[] gameCharacters = Game_Manager.characters;
+        GameObject currentCharacterObject = transform.GetChild((int)currentCharacter).gameObject;
+        PlayerCharacterSerializable player = gameCharacters.Where(p => p.characterName == currentCharacterObject.name).First();
+        int playerIndex = Array.FindIndex(gameCharacters, p => p.characterName == player.characterName);
+        Game_Manager.characters[playerIndex].bought = true;
+        Game_Manager.totalFishCollected -= player.value;
+        SaveSystem.SaveGame();
     }
 }

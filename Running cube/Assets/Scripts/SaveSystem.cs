@@ -4,20 +4,20 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveGame (Game_Manager gameManager, AudioManager audioManager)
+    public static void SaveGame ()
     {
         BinaryFormatter formatter = new();
         string path = Application.persistentDataPath + "/player.fun";
 
         FileStream stream = InitializeStream(path);
 
-        PlayerData data = new(gameManager, audioManager);
+        PlayerData data = new();
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static PlayerData LoadGame(Game_Manager gameManager, AudioManager audioManager)
+    public static PlayerData LoadGame()
     {
         string path = Application.persistentDataPath + "/player.fun";
         
@@ -28,7 +28,7 @@ public static class SaveSystem
             // stream.SetLength(0);
             
             if(stream.Length == 0) {
-                SaveGame(gameManager, audioManager);
+                SaveGame();
                 stream = InitializeStream(path);
             }
             PlayerData data = formatter.Deserialize(stream) as PlayerData;

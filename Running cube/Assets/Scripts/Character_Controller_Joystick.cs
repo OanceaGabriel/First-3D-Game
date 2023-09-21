@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.EventSystems;
 
 public class Character_Controller_Joystick : MonoBehaviour
