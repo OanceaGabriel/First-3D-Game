@@ -1,9 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEditor;
 
 public class Character_Controller_PC: MonoBehaviour
 {
@@ -41,7 +36,7 @@ public class Character_Controller_PC: MonoBehaviour
             Debug.Log("Jump!");
             GetComponent<Rigidbody>().AddForce(0 ,jump_Force*Time.deltaTime, 0, ForceMode.VelocityChange);
 
-            FindObjectOfType<AudioManager>().Play("Jump");
+            AudioManager.Instance.Play("Jump");
         }
     }
     // Update is called once per frame
