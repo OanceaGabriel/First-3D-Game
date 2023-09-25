@@ -1,4 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
@@ -22,7 +28,7 @@ public class FollowPlayer : MonoBehaviour
     }
     void Update()
     {
-        transform.position = currentPlayer.transform.position - Offset;
+        transform.position = currentPlayer.gameObject.transform.position - Offset;
     }
 
     

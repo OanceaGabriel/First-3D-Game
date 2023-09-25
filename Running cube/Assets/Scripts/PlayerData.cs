@@ -1,3 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
 [System.Serializable]
 public class PlayerData
 {
@@ -12,16 +16,16 @@ public class PlayerData
     public bool isUsingJoystick;
     public PlayerCharacterSerializable[] characters;
 
-    public PlayerData()
+    public PlayerData(Game_Manager game_Manager, AudioManager audioManager)
     {
-        fishCollectible = Game_Manager.totalFishCollected;
+        fishCollectible = game_Manager.totalFishCollected;
         currentLvl = Game_Manager.currentLvl;
 
         isUsingJoystick = Game_Manager.isUsingJoystick;
 
-        AudioManager.Instance.menuMusicMixer.GetFloat("MenuMusic", out m_SavedVolume);
-        AudioManager.Instance.gameMusicMixer.GetFloat("GameMusic", out g_SavedVolume);
-        AudioManager.Instance.soundEffectsMixer.GetFloat("Effects", out s_SavedVolume);
+        audioManager.menuMusicMixer.GetFloat("MenuMusic", out m_SavedVolume);
+        audioManager.gameMusicMixer.GetFloat("GameMusic", out g_SavedVolume);
+        audioManager.soundEffectsMixer.GetFloat("Effects", out s_SavedVolume);
 
         characters = Game_Manager.characters;
     }

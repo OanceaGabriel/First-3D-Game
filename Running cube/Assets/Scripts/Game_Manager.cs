@@ -1,4 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +14,7 @@ public class Game_Manager : MonoBehaviour
     private Canvas canvas;
 
     //Variables that track player progress
-    public static int totalFishCollected = 0;
+    public int totalFishCollected = 0;
     public static int currentLvl = 1;
 
     //public Settings_Menu settingsMenu;
@@ -29,12 +32,10 @@ public class Game_Manager : MonoBehaviour
     public static PlayerCharacterSerializable characterEquipped;
     public static AudioManager audioManager;
 
-    public static Game_Manager Instance { get { return instance; } }
-
     void Start()
     {
         scene = SceneManager.GetActiveScene();
-        audioManager = AudioManager.Instance;
+        audioManager = FindObjectOfType<AudioManager>();
         LoadGame();
         canvas = FindObjectOfType<Canvas>();
 
@@ -44,15 +45,6 @@ public class Game_Manager : MonoBehaviour
             canvas.transform.Find("Fixed Joystick").gameObject.SetActive(isUsingJoystick);
             canvas.transform.Find("Slider").gameObject.SetActive(!isUsingJoystick);
         }
-    }
-
-    private void Awake() {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-        } else {
-            instance = this;
-        }    
     }
 
     public void IsUsingJoystick (bool usingJoystick)
@@ -74,7 +66,7 @@ public class Game_Manager : MonoBehaviour
         {
             audioManager.Play("Death");
             gameHasEnded = true;
-            Invoke(nameof(Restart), restartDelay);
+            Invoke("Restart", restartDelay);
         }
     }
 
@@ -115,7 +107,7 @@ public class Game_Manager : MonoBehaviour
 
     public void SaveGame()
     {
-        SaveSystem.SaveGame();
+        SaveSystem.SaveGame(this, audioManager);
         Debug.Log("Saved level " + currentLvl + " fishes " + totalFishCollected + "Joystick: " + isUsingJoystick);
     }
 
@@ -123,7 +115,7 @@ public class Game_Manager : MonoBehaviour
     {
         if (scene.name == "Menu")
         {
-            PlayerData data = SaveSystem.LoadGame();
+            PlayerData data = SaveSystem.LoadGame(this, audioManager);
 
             totalFishCollected = data.fishCollectible;
             currentLvl = data.currentLvl;

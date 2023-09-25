@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class EndCondition : MonoBehaviour
 {
@@ -23,8 +26,8 @@ public class EndCondition : MonoBehaviour
         {
             if (lvlEnded.gameObject.CompareTag("LvlComplete"))
             {
-                Game_Manager.Instance.CompleteLevel();
-                Invoke(nameof(NextLevel), 3f);
+                FindObjectOfType<Game_Manager>().CompleteLevel();
+                Invoke("NextLevel", 3f);
             }
         }
     }
@@ -33,18 +36,18 @@ public class EndCondition : MonoBehaviour
     {
         if (collision.collider.gameObject.CompareTag("Obstacle"))
         {
-            AudioManager.Instance.Stop("InGameMusic");
-            AudioManager.Instance.Play("Death");
+            FindObjectOfType<AudioManager>().Stop("InGameMusic");
+            FindObjectOfType<AudioManager>().Play("Death");
             lost = true;
             GetComponent<Character_Controller_Phone>().enabled = false;
-            Game_Manager.Instance.GameOver();
+            FindObjectOfType<Game_Manager>().GameOver();
         }
     }
     private void Update()
     {
         if (transform.position.y < -1)
         {
-            Game_Manager.Instance.GameOver();
+            FindObjectOfType<Game_Manager>().GameOver();
         }
     }
 }

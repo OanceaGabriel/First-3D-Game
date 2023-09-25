@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Pause_Game : MonoBehaviour
 {
@@ -30,16 +33,16 @@ public class Pause_Game : MonoBehaviour
         GameIsPaused = false;
         pauseMenu.SetActive(false);
 
-        AudioManager.Instance.Play("InGameMusic");
-        AudioManager.Instance.Stop("Pause");
+        FindObjectOfType<AudioManager>().Play("InGameMusic");
+        FindObjectOfType<AudioManager>().Stop("Pause");
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
         GameIsPaused = true;
-        AudioManager.Instance.Stop("InGameMusic");
-        AudioManager.Instance.Play("Pause");
+        FindObjectOfType<AudioManager>().Stop("InGameMusic");
+        FindObjectOfType<AudioManager>().Play("Pause");
     }
 
     public void LoadLevelSelector()
