@@ -36,26 +36,28 @@ public class ShopControlls : MonoBehaviour
 
             if (startTouchPos.x < endTouchPos.x)
             {
-                this.transform.Translate(2, 0, 0);
-                
+                transform.Translate(-2, 0, 0);
             }
-            else
+            else if(startTouchPos.x > endTouchPos.x)
             {
-                this.transform.Translate(-2, 0, 0);
-                
+                transform.Translate(2, 0, 0);
             }
         }
-        if (this.transform.position.x == characterIndex * 2 + 2)
-        {
-            this.transform.Translate(0, 0, 0);
-        }
-        else if (this.transform.position.x == -2)
-        {
-            this.transform.Translate(characterIndex * 2 - 2, 0, 0);
-        }
-
-        currentCharacter = ((this.transform.position.x) / 2);
+        currentCharacter = (-(this.transform.position.x) / 2);
         //Debug.Log(currentCharacter);
+    }
 
+    private void FixedUpdate()
+    {
+        if (transform.position.x < 0)
+        {
+            Debug.Log("Start");
+            transform.transform.position = Vector3.zero;
+        }
+        else if (transform.position.x > characterIndex*2-2)
+        {
+            Debug.Log("End");
+            transform.transform.position = new Vector3(characterIndex*2 -2, 0, 0);
+        }
     }
 }
