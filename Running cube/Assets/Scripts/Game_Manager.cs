@@ -145,6 +145,7 @@ public class Game_Manager : MonoBehaviour
                     );
                     characters = characters.Append(serializable).ToArray();                   
                 }
+                characters = characters.OrderBy(c => c.value).ToArray();
             } else {
                 Debug.Log("Data characters not null or empty");
                 characters = data.characters;
