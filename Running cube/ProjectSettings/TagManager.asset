@@ -46,6 +46,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Joystick
+    uniqueID: 1277640647
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

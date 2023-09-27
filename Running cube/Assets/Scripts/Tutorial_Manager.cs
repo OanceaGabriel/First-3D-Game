@@ -7,8 +7,6 @@ using UnityEngine.UI;
 public class Tutorial_Manager : MonoBehaviour
 {
     [SerializeField] private GameObject backgroundPanel;
-    [SerializeField] private GameObject introductionPanel;
-    //[SerializeField] private GameObject movementPanel;
     [SerializeField] private Canvas tutorialCanvas;
 
     private Image image;
@@ -16,8 +14,6 @@ public class Tutorial_Manager : MonoBehaviour
 
     private bool once = true;
     private float tutorialDelay = 1.5f;
-
-    // Update is called once per frame
 
     private void Start()
     {
@@ -27,34 +23,37 @@ public class Tutorial_Manager : MonoBehaviour
     void Update()
     {
         Debug.Log(animator.GetCurrentAnimatorStateInfo(1).normalizedTime);
-        if (IsAnimationFinished(tutorialDelay) && AnimationName("Tutorial_1"))
+        if (IsAnimationFinished(tutorialDelay) && AnimationName("Tutorial_1") && Input.touchCount > 0)
         {
             animator.SetBool("fade", false);
             backgroundPanel.transform.Find("Introduction").gameObject.SetActive(false);
             Time.timeScale = 1.0f;
         }
         
-        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_2")) 
+        if (IsAnimationFinished(1f) && AnimationName("Tutorial_2") && Input.touchCount > 0) 
         {
             animator.SetBool("fade", false);
             animator.SetBool("tutorial2", false);
             image.enabled = false;
+            backgroundPanel.transform.Find("Movement").gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
 
-        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_3_Jump"))  
+        if (IsAnimationFinished(1f) && AnimationName("Tutorial_3_Jump") && Input.touchCount > 0)  
         {
             animator.SetBool("fade", false);
             animator.SetBool("tutorial3", false);
             image.enabled = false;
+            backgroundPanel.transform.Find("Movement").gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
 
-        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_4"))
+        if (IsAnimationFinished(tutorialDelay + 1f) && AnimationName("Tutorial_4") && Input.touchCount > 0)
         {
             animator.SetBool("fade", false);
-            animator.SetBool("tutorial3", false);
+            animator.SetBool("tutorial4", false);
             image.enabled = false;
+            tutorialCanvas.gameObject.SetActive(false);
             Time.timeScale = 1f;
         }
     }
@@ -81,6 +80,7 @@ public class Tutorial_Manager : MonoBehaviour
 
         if (collider.name == "Tutorial_3" && once)
         {
+            backgroundPanel.transform.Find("Movement").gameObject.SetActive(true);
             image.enabled = true;
             animator.SetBool("fade", true);
             animator.SetBool("tutorial3", true);
@@ -94,6 +94,7 @@ public class Tutorial_Manager : MonoBehaviour
             animator.SetBool("fade", true);
             animator.SetBool("tutorial4", true);
             Time.timeScale = 0f;
+            once = true;
         }
     }
 
